@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html ng-app = "myChatApp">
   <head>
     <meta charset="utf-8">
     <title>Worth It!</title>
   </head>
-  <body>
+  <body ng-controller = "chatCtrl">
     <strong>Worth it!</strong>
+    <form ng-submit = "addChats(message)">
+      <input type="text" name="name" ng-model = "message"><button type="button" name="button" ng-click = "addChats(message)">Chatz!</button>
+      <button type="button" name="button" ng-click = "clearChats()">Bye Bye Chats`</button>
+    </form>
+    <div ng-repeat =  "message in messages |orderBy:$index:false">{{message.message}}
+    </div>
+
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js"></script>
+    <script src = "app.js"></script>
   </body>
 </html>
