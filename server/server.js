@@ -13,12 +13,12 @@ app.get("/api/chats", function(res,res){
 })
 app.post("/api/chats", function(req,res){
   chats.push(req.body)
-  console.log(chats);
+  console.log(req.body);
   res.sendStatus(200);
 })
 app.delete("/api/chats", function(req, res){
   chats = [];
-  console.log("hmmm");
+  console.log("Communications Terminated");
   res.sendStatus(200);
 })
 
