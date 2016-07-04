@@ -1,19 +1,74 @@
 <!DOCTYPE html>
-<html ng-app = "myChatApp">
+<html ng-app = "myChats">
   <head>
     <meta charset="utf-8">
-    <title>Worth It!</title>
+    <title>Cookie Chat With Friends</title>
   </head>
-  <body ng-controller = "chatCtrl">
-    <strong>Worth it!</strong>
-    <form ng-submit = "addChats(message)">
-      <input type="text" name="name" ng-model = "message"><button type="button" name="button" ng-click = "addChats(message)">Chatz!</button>
-      <button type="button" name="button" ng-click = "clearChats()">Bye Bye Chats`</button>
+  <body ng-controller = "mainCtrl">
+    <h3>{{test}}</h3>
+
+    <style>
+    body, html{
+      margin: 0;
+      padding: 0;
+    }
+
+    form{
+      positon:absolute;
+    }
+      .message-pane{
+        height:85vh;
+        width:70vw;
+        float:left;
+        padding:10px;
+      }
+      .messages{
+        overflow:auto;
+        max-height: 90%;
+      }
+      .cookies{
+        height:85vh;
+        width:25vw;
+        overflow:auto;
+        float:left;
+      }
+      .cookie {
+        display:block;
+      }
+      span.message {
+        padding-left: 60px;
+        display:block;
+      }
+    </style>
+
+
+
+    <div class = "message-pane">
+      <form ng-submit="addChat(newChat)">
+      <input type="text" placeholder="Say the things" ng-model="newChat.message">
+      <button type="submit"> sayStuff </button>
+      <!-- <button ng-click ="deleteChats()"> Armeggeddon </button> -->
     </form>
-    <div ng-repeat =  "message in messages |orderBy:$index:false">{{message.message}}
+      <div class = "messages">
+      <div class = "message" ng-repeat = "chat in chats">
+        <span class = "cookie">{{chat.cookie}}</span>
+        <span class = "message">{{chat.message}} </span>
+      </div>
+    </div>
+    </div>
+    <div class = "cookies">
+      <button ng-click = "sendCookie()">
+        Send Cookie
+      </button>
+      <div class = "message" ng-repeat = "(key, cookie) in cookies">
+        {{key}}:{{cookie}}
+      </div>
     </div>
 
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js"></script>
-    <script src = "app.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.js" charset="utf-8"></script>
+    <script src="js/app.js" charset="utf-8"></script>
+    <script src="js/mainCtrl.js" charset="utf-8"></script>
+    <script src="js/mainSrvc.js" charset="utf-8"></script>
   </body>
 </html>
