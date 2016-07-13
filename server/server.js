@@ -7,10 +7,13 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var _ = require('underscore');
 var port = serverConfig.serverPort;
+var cors = require('cors');
 
 var adjectives = ["Tasty","Great","Delicious", "Palatable", "Luscious", "Mourthwatering", "Delectable", "Dainty", "Flavorful"];
 var cookieTypes = ["Black and White", "Butter", "Butter Pecan", "Chocolate Chip", "Christmas", "Coconut Macaroon", "Macaroon", "Fortune", "Fudge", "Gingerbread"];
 
+
+app.use(cors());
 app.use(express.static(__dirname+'/../public'));
 app.use(bodyParser.json());
 
