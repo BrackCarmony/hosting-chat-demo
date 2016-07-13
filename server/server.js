@@ -71,10 +71,13 @@ app.listen(port, function(){
 });
 
 function customCookies(req, res, next){
+  console.log("CustomeCookies");
   if (!req.session.cookieType){
+
     req.session.cookieType = adjectives[Math.floor(Math.random()*adjectives.length)]
     + " " + cookieTypes[Math.floor(Math.random()*cookieTypes.length)]
     + " Cookie"
+    console.log("New Cookie", req.session.cookieType);
   }
   next();
 }
