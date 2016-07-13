@@ -9,8 +9,12 @@ var _ = require('underscore');
 var port = serverConfig.serverPort;
 var cors = require('cors');
 
+var getIP = require('ipware')().get_ip;
+
+
 var adjectives = ["Tasty","Great","Delicious", "Palatable", "Luscious", "Mourthwatering", "Delectable", "Dainty", "Flavorful"];
 var cookieTypes = ["Black and White", "Butter", "Butter Pecan", "Chocolate Chip", "Christmas", "Coconut Macaroon", "Macaroon", "Fortune", "Fudge", "Gingerbread"];
+var mycookie = {};
 
 
 app.use(cors());
@@ -39,9 +43,9 @@ app.get("/api/chats", function(res,res){
 })
 
 app.post("/api/chats", function(req,res){
-  console.log('message', req.body.message);
+  // console.log('message', req.body.message);
   req.body.message = req.body.message.slice(0,1000);
-  req.body.cookie = req.session.cookieType;
+  req.body.cookie = req.cookieType;
   req.body.createdAt = new Date();
   chats.push(req.body);
   while (chats.length>100){
@@ -52,15 +56,17 @@ app.post("/api/chats", function(req,res){
 
 app.delete("/api/chats", function(req, res){
   chats = [];
-  console.log("Communications Terminated");
+  // console.log("Communications Terminated");
   res.sendStatus(200);
 })
 
 app.post("/api/cookies", function(req, res){
-  if (!cookies[req.session.cookieType]){
-    cookies[req.session.cookieType] = 1;
+  var ipInfo = getIP(req);
+    console.log(ipInfo);
+  if (!cookies[req.cookieType]){
+    cookies[req.cookieType] = 1;
   }else{
-    cookies[req.session.cookieType]++;
+    cookies[req.cookieType]++;
   }
 
   res.sendStatus(200);
@@ -76,14 +82,20 @@ app.listen(port, function(){
 });
 
 function customCookies(req, res, next){
-  console.log("CustomeCookies");
-  if (!req.session.cookieType){
+  // console.log("CustomeCookies");
+  var ipInfo = getIP(req);
+  console.log(ipInfo);
 
-    req.session.cookieType = adjectives[Math.floor(Math.random()*adjectives.length)]
+
+  if (!mycookie[ipInfo]){
+
+    mycookie[ipInfo] = adjectives[Math.floor(Math.random()*adjectives.length)]
     + " " + cookieTypes[Math.floor(Math.random()*cookieTypes.length)]
     + " Cookie"
-    console.log("New Cookie", req.session.cookieType);
+    // console.log("New Cookie", req.session.cookieType);
   }
+
+  req.cookieType = mycookie[ipInfo];
   next();
 }
 
