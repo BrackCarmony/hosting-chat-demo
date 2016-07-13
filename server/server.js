@@ -35,7 +35,7 @@ app.use(customCookies)
 var chats = [];
 var cookies = {};
 app.get("/api/chats", function(res,res){
-  res.send({chats:chats, cookies:cookies});
+  res.send({chats:chats});
 })
 
 app.post("/api/chats", function(req,res){
@@ -64,6 +64,10 @@ app.post("/api/cookies", function(req, res){
 
   res.sendStatus(200);
 });
+
+app.get("/api/cookies", function(res,res){
+  res.send({cookies:cookies});
+})
 
 
 app.listen(port, function(){
