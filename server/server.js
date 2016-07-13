@@ -42,6 +42,7 @@ app.post("/api/chats", function(req,res){
   console.log('message', req.body.message);
   req.body.message = req.body.message.slice(0,1000);
   req.body.cookie = req.session.cookieType;
+  req.body.createdAt = new Date();
   chats.push(req.body);
   while (chats.length>100){
     chats.shift();

@@ -1,8 +1,9 @@
 angular.module("myChats").service("mainSrvc", function($http){
 
+  var baseUrl = "http://brackcarmony.com:8092";
 
   this.getChats = function(){
-    return $http.get("/api/chats").then(
+    return $http.get(baseUrl + "/api/chats").then(
       function(response){
         console.log(response);
         return response.data;
@@ -11,14 +12,14 @@ angular.module("myChats").service("mainSrvc", function($http){
 
   this.addChats = function(chat){
     console.log(chat);
-    return $http.post("/api/chats", chat)
+    return $http.post(baseUrl + "/api/chats", chat)
   }
 
   this.deleteChats = function(){
-    return $http.delete("/api/chats");
+    return $http.delete(baseUrl + "/api/chats");
   }
 
   this.sendCookie = function(){
-    return $http.post("/api/cookies");
+    return $http.post(baseUrl + "/api/cookies");
   }
 });
