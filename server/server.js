@@ -87,6 +87,7 @@ function customCookies(req, res, next){
   var ipInfo = getIP(req);
   console.log("ipInfo", ipInfo);
   console.log("req.ips", req.ips);
+  console.log("req.headers", req.headers);
 
 
   if (!mycookie[ipInfo]){
