@@ -16,7 +16,10 @@ var adjectives = ["Tasty","Great","Delicious", "Palatable", "Luscious", "Mourthw
 var cookieTypes = ["Black and White", "Butter", "Butter Pecan", "Chocolate Chip", "Christmas", "Coconut Macaroon", "Macaroon", "Fortune", "Fudge", "Gingerbread"];
 var mycookie = {};
 
-
+app.use(function(req, res, next){
+  console.log(req.headers);
+  next();
+})
 app.use(cors());
 app.use(express.static(__dirname+'/../public'));
 app.use(bodyParser.json());
@@ -63,7 +66,7 @@ app.delete("/api/chats", function(req, res){
 app.post("/api/cookies", function(req, res){
 
   var ipInfo = getIP(req);
-    console.log(ipInfo);
+    //console.log(ipInfo);
   if (!cookies[req.cookieType]){
     cookies[req.cookieType] = 1;
   }else{
@@ -85,9 +88,9 @@ app.listen(port, function(){
 function customCookies(req, res, next){
   // console.log("CustomeCookies");
   var ipInfo = getIP(req);
-  console.log("ipInfo", ipInfo);
-  console.log("req.ips", req.ips);
-  console.log("req.headers", req.headers);
+  //console.log("ipInfo", ipInfo);
+  //console.log("req.ips", req.ips);
+  //console.log("req.headers", req.headers);
 
 
   if (!mycookie[ipInfo]){

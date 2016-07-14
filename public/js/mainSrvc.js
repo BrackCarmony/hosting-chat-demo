@@ -1,6 +1,6 @@
 angular.module("myChats").service("mainSrvc", function($http){
 
-  var baseUrl = "http://brackcarmony.com:8092";
+  var baseUrl = "http://brackcarmony.com:8091";
 
   this.getChats = function(){
     return $http.get(baseUrl + "/api/chats").then(
