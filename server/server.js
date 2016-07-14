@@ -17,7 +17,7 @@ var cookieTypes = ["Black and White", "Butter", "Butter Pecan", "Chocolate Chip"
 var mycookie = {};
 
 app.use(function(req, res, next){
-  console.log(req.headers);
+  console.log(req);
   next();
 })
 app.use(cors());
