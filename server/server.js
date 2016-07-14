@@ -61,6 +61,7 @@ app.delete("/api/chats", function(req, res){
 })
 
 app.post("/api/cookies", function(req, res){
+
   var ipInfo = getIP(req);
     console.log(ipInfo);
   if (!cookies[req.cookieType]){
@@ -84,7 +85,8 @@ app.listen(port, function(){
 function customCookies(req, res, next){
   // console.log("CustomeCookies");
   var ipInfo = getIP(req);
-  console.log(ipInfo);
+  console.log("ipInfo", ipInfo);
+  console.log("req.ips", req.ips);
 
 
   if (!mycookie[ipInfo]){
