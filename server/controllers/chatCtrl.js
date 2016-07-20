@@ -34,15 +34,11 @@ module.exports = function(app){
   })
 
   app.post("/api/cookies", function(req, res){
-
-    var ipInfo = getIP(req);
-    console.log(ipInfo);
     if (!cookies[req.cookieType]){
       cookies[req.cookieType] = 1;
     }else{
       cookies[req.cookieType]++;
     }
-
     res.sendStatus(200);
   });
 
@@ -52,11 +48,6 @@ module.exports = function(app){
 
 
   function customCookies(req, res, next){
-    // console.log("CustomeCookies");
-    var ipInfo = getIP(req);
-    console.log(req.headers);
-
-
     if (!mycookie[req.headers['user-agent']]){
 
       mycookie[req.headers['user-agent']] = adjectives[Math.floor(Math.random()*adjectives.length)]
@@ -66,7 +57,6 @@ module.exports = function(app){
     }
 
     req.cookieType = mycookie[req.headers['user-agent']];
-    console.log(req.cookieType);
     next();
   }
 }
