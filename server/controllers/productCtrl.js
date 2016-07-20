@@ -1,4 +1,4 @@
-
+"use strict"
 const products = require('../json/products.json');
 const _ = require('lodash');
 
