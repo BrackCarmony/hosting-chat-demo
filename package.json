@@ -14,6 +14,7 @@
     "cors": "^2.7.1",
     "express": "^4.13.4",
     "express-session": "^1.14.0",
+    "lodash": "^4.13.1",
     "mongoose": "^4.4.3",
     "underscore": "^1.8.3"
   }
