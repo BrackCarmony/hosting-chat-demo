@@ -22,4 +22,7 @@ angular.module("myChats").service("mainSrvc", function($http){
   this.sendCookie = function(){
     return $http.post(baseUrl + "/api/cookies");
   }
+  this.getCookies = function(){
+    return $http.get(baseUrl + "/api/cookies");
+  }
 });

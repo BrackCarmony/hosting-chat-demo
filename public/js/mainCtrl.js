@@ -10,10 +10,12 @@ angular.module("myChats").controller("mainCtrl", function($scope, mainSrvc, $int
 
   function getData(){
     mainSrvc.getChats().then(function(response){
-      $scope.chats = response.chats;
-      $scope.cookies = response.cookies;
-      console.log(response.cookies);
+      $scope.chats = response;
+
     });
+    mainSrvc.getCookies().then(function(response){
+      $scope.cookies = response
+    })
   }
 
   $scope.deleteChats = function(){

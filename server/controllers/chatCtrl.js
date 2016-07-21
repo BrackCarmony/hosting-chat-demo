@@ -9,7 +9,7 @@ module.exports = function(app){
   var chats = [];
   var cookies = {};
   app.get("/api/chats", function(res,res){
-    res.send({chats:chats});
+    res.send(chats);
   })
 
   app.post("/api/chats", function(req,res){
