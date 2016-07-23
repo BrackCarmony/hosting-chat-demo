@@ -19,7 +19,7 @@
 
   If you've never set up SSH keys, it is highly recommended that you create some, it will make working with your server much easier.  
 
-  ```$ ssh-keygen -t rsa```
+  ```ssh-keygen -t rsa```
 
 This will start a process to step you through the key generation process.  The default location and filename are probably best for your first key.
 
