@@ -19,7 +19,7 @@
 
   If you've never set up SSH keys, it is highly recommended that you create some, it will make working with your server much easier.  
 
-  ```$ ssh-keygen -t rsa```
+  ```ssh-keygen -t rsa```
 
 This will start a process to step you through the key generation process.  The default location and filename are probably best for your first key.
 
@@ -45,7 +45,8 @@ The key's randomart image is:
 | . +             |
 |*.=              |
 |+Bo              |
-+-----------------+```
++-----------------+
+```
 
 This will create two files on your computer.  ```id_rsa``` and ```id_rsa.pub``` if you used the default. They will be in your ```~/.ssh``` folder.
 The one with .pub is your public key, this is what you can give to services like Digital Ocean and Github to identify your computer.  
