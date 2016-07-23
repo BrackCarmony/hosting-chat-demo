@@ -45,7 +45,8 @@ The key's randomart image is:
 | . +             |
 |*.=              |
 |+Bo              |
-+-----------------+```
++-----------------+
+```
 
 This will create two files on your computer.  ```id_rsa``` and ```id_rsa.pub``` if you used the default. They will be in your ```~/.ssh``` folder.
 The one with .pub is your public key, this is what you can give to services like Digital Ocean and Github to identify your computer.  
