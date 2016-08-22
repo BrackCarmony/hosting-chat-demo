@@ -94,6 +94,32 @@ npm i -g n ; n latest ; npm i -g npm
 
 ```
 
+## Swap -- Optional
+Swap instructions from [Zac Anger's](https://github.com/zacanger) wonderful [documentation](https://github.com/zacanger/doc). 
+
+The most limited resource on your droplet will be RAM. They don't come with much on the $5 tier.
+You probably don't need a whole lot to run your apps, but npm, grunt, gulp, or webpack take their fair share. You could pay for more RAM, but you could also just set up a swapfile.
+
+This should
+
+```
+touch /swapfile
+fallocate -l 1G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+```
+
+* The swapfile will only be in use till the droplet restarts.
+* If you want to make it so the dorplet loads with the swapfile one
+* `nano /etc/fstab`. add the following to the bottom:
+  `/swapfile   none    swap    sw    0   0`
+* We can also tell the server to use the swap file less frequently by lowering the swapiness
+* We should adjust swappiness closer to 0 (from the default 60). `nano /etc/sysctl.conf`
+  and add `vm.swappiness=10` to the bottom.
+
+--------
+
 ### Clone Project
 
 Now we can get your project cloned to your repo. Make sure you're at your home directory  
