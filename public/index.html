@@ -39,6 +39,9 @@
         padding-left: 60px;
         display:block;
       }
+      .right {
+        float:right;
+      }
     </style>
 
 
@@ -60,8 +63,8 @@
       <button ng-click = "sendCookie()">
         Send Cookie
       </button>
-      <div class = "message" ng-repeat = "(key, cookie) in cookies">
-        {{key}}:{{cookie}}
+      <div class = "message" ng-repeat = "(key, cookie) in cookies.cookies">
+        {{key}}<span class="right">{{cookie}}</span>
       </div>
     </div>
 

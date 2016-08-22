@@ -21,7 +21,6 @@ app.use(session({
   cookie: { secure: false }
 }))
 
-require('./controllers/productCtrl')(app);
 require('./controllers/chatCtrl')(app);
 
 app.listen(port, function(){
