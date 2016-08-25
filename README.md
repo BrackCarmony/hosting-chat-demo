@@ -162,7 +162,7 @@ Then we will start the process running.
 ```sh
 npm install -g forever
 forever columns add dir
-forever server/server.js
+forever start server/server.js
 ```
 
 To see the currently running processes: ```forever list```
