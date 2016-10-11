@@ -4,7 +4,6 @@ var serverConfig = require("./../server_config.js");
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
 var _ = require('underscore');
 var port = serverConfig.serverPort;
 var cors = require('cors');
