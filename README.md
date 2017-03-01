@@ -175,11 +175,30 @@ Unless you have lots of friends that enjoy accessing websites by ip (You know th
 
 ### NGINX
 
-If you don't want to use port 80, or you want to put multiple projects on one droplet, we can do that with nginx
+If you don't want to use port 80, or you want to put multiple projects on one droplet, we can do that with nginx.
+
+First we are going to tell Ubuntu where we can get the latest version of Ubuntu.
 
 ```
-apt install nginx
+nano /etc/apt/sources.list
+```
+Append the following 2 lines to the bottom of the file.
+```
+deb http://nginx.org/packages/ubuntu/ xenial nginx
+deb-src http://nginx.org/packages/ubuntu/ xenial nginx
+```
 
+Then we are going to run the following commands to actually install nginx.
+
+```
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $key
+sudo apt-get update
+sudo apt-get install nginx
+```
+
+We are going to go into the sites-available folder to edit the default file.
+
+```
 cd /etc/nginx/sites-available/
 ```
 
